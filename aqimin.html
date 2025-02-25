@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>aQi - by HMWMM</title>
+    <style>
+        body {
+            font-family: sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #000;
+            color: #fff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        #loadingScreen {
+            position: fixed; /* Use fixed positioning */
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.9);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 2000; /* Ensure it's on top */
+        }
+
+        #loadingText {
+            color: #0cf; /* Bright cyan for visibility */
+            font-size: 1.5em;
+        }
+
+        #container {
+          display: none; /* Initially hidden */
+          width: 100%;
+          height: 100%;
+        }
+        #container.loaded{
+          display: flex;
+        }
+    </style>
+</head>
+<body>
+    <div id="loadingScreen">
+        <div id="loadingText">aQi Loading...</div>
+    </div>
+    <div id="container">
+        <h1>aQi - HMWMM</h1>
+        <p>Main content here.</p>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            console.log('DOMContentLoaded event fired.');
+
+            const loadingScreen = document.getElementById('loadingScreen');
+            const container = document.getElementById('container');
+
+            if (!loadingScreen || !container) {
+                console.error('Critical elements (loadingScreen or container) not found!');
+                return; // Stop execution if elements are missing.
+            }
+
+            console.log('Elements found.  Starting timeout.');
+
+            setTimeout(() => {
+                console.log('Timeout callback executed.');
+                loadingScreen.style.display = 'none';
+                container.classList.add('loaded');
+                console.log('Loading screen hidden, container shown.');
+            }, 2000); // 2-second delay for demonstration
+        });
+
+    </script>
+</body>
+</html>
